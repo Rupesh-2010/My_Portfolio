@@ -298,6 +298,14 @@ nav a:hover::after {
 }
 
 /* BUTTONS */
+
+.edu-year {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  opacity: 0.7;
+}
+
 .btn {
   display: inline-block;
   margin-right: 15px;
@@ -322,6 +330,248 @@ iframe {
   width: 100%;
   margin-top: 10px;
   padding: 10px;
+}
+
+
+/* =====================
+   RESUME SECTION
+===================== */
+
+.resume-card {
+  background: #0b1220;
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.55);
+  text-align: center;
+}
+
+/* PDF PREVIEW */
+.resume-preview {
+  width: 100%;
+  height: 420px;
+  border-radius: 12px;
+  border: none;
+  margin-bottom: 22px;
+  background: #020617;
+}
+
+/* BUTTON AREA */
+.resume-actions {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+/* BUTTON BASE */
+.resume-btn {
+  padding: 12px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+/* PRIMARY */
+.resume-btn.primary {
+  background: #2563eb;
+  color: #fff;
+}
+
+.resume-btn.primary:hover {
+  background: #1d4ed8;
+  transform: translateY(-3px);
+}
+
+
+/* =====================
+   RESUME SCROLL FIX
+===================== */
+
+/* Allow page to scroll */
+body, html {
+  overflow-y: auto;
+}
+
+/* Resume section should NOT lock scroll */
+#resume {
+  overflow: visible;
+}
+
+/* PDF iframe – internal scroll OK */
+.resume-preview {
+  max-height: 420px;
+  overflow: auto;
+}
+
+/* Page section generic fix */
+.page-section {
+  overflow: visible;
+}
+
+
+
+/* OUTLINE */
+.resume-btn.outline {
+  border: 1px solid #60a5fa;
+  color: #60a5fa;
+}
+
+.resume-btn.outline:hover {
+  background: rgba(96,165,250,0.15);
+  transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+
+  .resume-preview {
+    display: none;   /* 📱 mobile वर preview hide */
+  }
+
+  .resume-card {
+    padding: 22px;
+  }
+
+}
+
+
+/* =====================
+   CONTACT SECTION
+===================== */
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.contact-name {
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: 1px;
+
+  background: linear-gradient(90deg, #60a5fa, #38bdf8);
+
+  -webkit-background-clip: text;   /* ✅ FIX */
+  background-clip: text;           /* Firefox support */
+  color: transparent;               /* safer than text-fill */
+
+  animation: glowText 3s infinite alternate;
+  display: inline-block;            /* IMPORTANT */
+}
+
+
+@keyframes glowText {
+  from {
+    text-shadow: 0 0 8px rgba(96,165,250,0.4);
+  }
+  to {
+    text-shadow: 0 0 18px rgba(56,189,248,0.9);
+  }
+}
+
+
+.contact-sub {
+  margin-top: 10px;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+/* ICONS */
+.contact-icons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 30px 0;
+}
+
+.contact-icons img {
+  width: 38px;
+  transition: 0.35s;
+}
+
+.contact-icons a:hover img {
+  transform: translateY(-6px) scale(1.15);
+  filter: drop-shadow(0 0 10px #60a5fa);
+}
+
+/* MAP */
+.contact-map {
+  margin-top: 30px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+.contact-map iframe {
+  width: 100%;
+  height: 320px;
+  border: none;
+}
+
+
+.guestbook {
+  margin-top: 40px;
+}
+
+.guestbook h2 {
+  margin-bottom: 20px;
+}
+
+#guestForm input,
+#guestForm textarea {
+  width: 100%;
+  background: #020617;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.guest-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.guest-actions button {
+  padding: 10px 18px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  background: #2563eb;
+  color: #fff;
+}
+
+.comment {
+  background: #0b1220;
+  padding: 14px;
+  border-radius: 10px;
+  margin-top: 14px;
+}
+
+.comment small {
+  opacity: 0.6;
+  font-size: 11px;
+}
+
+
+
+
+
+
+
+
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .contact-name {
+    font-size: 32px;
+  }
+
+  .contact-map iframe {
+    height: 260px;
+  }
 }
 
 
@@ -365,293 +615,393 @@ nav {
     margin-top: 40px;
   }
 }
-
-
-/* ===========================
-   EDUCATION SECTION
-=========================== */
-
-.edu-wrapper {
-  margin-top: 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 36px;
 }
 
-/* EDUCATION CARD */
+
+
+
+/* ==========================
+   EDUCATION (ASHUTOSH STYLE)
+========================== */
+
+.education-scroll {
+  max-height: calc(100vh - 140px);
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+
+
+/* COLLEGE CARDS */
+
+/* ===== EDUCATION COLLEGE CARD – FINAL ===== */
+
+
+/* ===== EDUCATION COLLEGE CARD – FINAL FIX ===== */
+
 .edu-card {
+  position: relative;
   display: flex;
-  gap: 24px;
   align-items: center;
-  padding-bottom: 30px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+
+  gap: 12px;                 /* 🔥 logo ↔ text gap FIX */
+  padding: 22px;
+  margin-bottom: 30px;
+
+  background: #0b1220;
+  border-radius: 16px;
 }
 
-.edu-logo img {
-  width: 80px;
-  height: 80px;
+/* LOGOS COLUMN (FIXED WIDTH) */
+.edu-logos {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  width: 150px;              /* 🔥 controls text start point */
+  flex-shrink: 0;
+}
+
+/* LOGO SIZE */
+.edu-logos img {
+  width: 70px;
+  height: 70px;
   object-fit: contain;
-  transition: transform 0.4s ease;
 }
 
-.edu-card:hover .edu-logo img {
-  transform: scale(1.1);
+/* TEXT BLOCK */
+.edu-info {
+  flex: 1;
+  text-align: left;          /* 🔥 keeps text near logos */
 }
 
-.edu-content h3 {
+/* DEGREE */
+.edu-info h3 {
   margin: 0;
   font-size: 17px;
   font-weight: 600;
 }
 
-.edu-content p {
+/* COLLEGE NAME */
+.edu-info p {
   margin: 6px 0;
   font-size: 14px;
   opacity: 0.85;
 }
 
-.edu-content span {
+/* UNIVERSITY NAME */
+.university-name {
+  margin: 4px 0;
   font-size: 13px;
-  opacity: 0.6;
-  display: block;
+  opacity: 0.65;
+  font-style: italic;
 }
 
-.edu-btn {
-  margin-top: 10px;
-  display: inline-block;
+/* YEAR */
+.edu-year {
+  margin-top: 6px;
   font-size: 13px;
+  opacity: 0.7;
+}
+
+/* WEBSITE BUTTON */
+.edu-btn {
+  position: absolute;
+  right: 18px;
+  bottom: 16px;
+
+  font-size: 13px;
+  padding: 6px 16px;
+
   color: #60a5fa;
   text-decoration: none;
+  border: 1px solid rgba(96,165,250,0.4);
+  border-radius: 20px;
+
+  transition: all 0.3s ease;
 }
 
-/* =========================
-   EDUCATION – THEME AWARE
-========================= */
-
-.edu-section {
-  transition: background 0.3s;
+.edu-btn:hover {
+  background: rgba(96,165,250,0.18);
+  transform: translateY(-2px);
 }
 
-/* CARD BASE */
-.edu-card {
-  display: flex;
-  gap: 30px;
-  padding: 30px;
-  margin: 30px 0;
-  border-radius: 18px;
-}
 
-/* DARK THEME */
-body.dark .edu-card,
-body.dark .cert-card {
-  background: rgba(255,255,255,0.05);
-}
-
-/* LIGHT THEME */
-body.light .edu-card,
-body.light .cert-card {
-  background: #ffffff;
-}
-
-/* LOGO */
-.edu-logo-circle {
-  min-width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.edu-logo-circle img {
-  width: 70%;
-}
-
-/* DETAILS */
-.edu-details h3 {
-  margin: 0;
-}
-
-.edu-details ul {
-  margin: 12px 0;
-  padding-left: 18px;
-}
-
-.edu-btn {
-  display: inline-block;
-  margin-top: 10px;
-  color: #2563eb;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-/* =========================
-   CERTIFICATIONS
-========================= */
+/* ==========================
+   CERTIFICATIONS – FINAL
+========================== */
 
 .cert-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 22px;
   margin-top: 30px;
 }
 
 .cert-card {
-  padding: 20px;
-  border-radius: 14px;
-  text-decoration: none;
-  color: inherit;
-  transition: 0.3s;
-}
-
-.cert-card:hover {
-  transform: translateY(-6px);
-}
-
-.cert-top {
-  height: 10px;
-  border-radius: 10px 10px 0 0;
-  margin: -20px -20px 14px;
-}
-
-/* COLOR STRIPS */
-.sp-blue { background: #2563eb; }
-.shivaji-red { background: #b91c1c; }
-.excelr-orange { background: #f97316; }
-.linkedin-blue { background: #0a66c2; }
-.leetcode-yellow { background: #facc15; }
-.hackerrank-green { background: #16a34a; }
-.anudip-blue { background: #0284c7; }
-
-/* =========================
-   SKILLS WHITE SECTION
-========================= */
-body.light .skills-white {
-  background: #ffffff;
-  padding: 30px;
+  background: #0b1220;
   border-radius: 16px;
-}
-
-body.dark .skills-white {
-  background: rgba(255,255,255,0.04);
-  padding: 30px;
-  border-radius: 16px;
-}
-
-/* =========================
-   SCROLL ANIMATION
-========================= */
-.ash-animate {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.7s ease;
-}
-
-.ash-animate.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-
-/* ===========================
-   CERTIFICATIONS & AWARDS
-=========================== */
-
-.cert-wrapper {
-  margin-top: 24px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 16px;
-}
-
-.cert-card {
-  padding: 14px 16px;
-  background: rgba(255,255,255,0.04);
-  border-radius: 10px;
+  padding: 18px;
+  text-align: center;
   text-decoration: none;
   color: #e5e7eb;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* IMAGE */
+.cert-card img {
+  width: 100%;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+/* TEXT */
+.cert-card p {
   font-size: 13px;
-  transition: all 0.3s ease;
+  line-height: 1.5;
 }
 
+.cert-card span {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* 🔥 SAME AS SKILLS HOVER */
 .cert-card:hover {
-  background: rgba(255,255,255,0.08);
-  transform: translateY(-4px);
+  transform: translateY(-8px);
+  box-shadow: 0 14px 32px rgba(96,165,250,0.28);
 }
 
-/* ===========================
-   SKILLS SECTION
-=========================== */
+/* MOBILE */
+@media (max-width: 768px) {
+  .cert-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
-.skills-wrapper {
-  margin-top: 24px;
+
+
+
+/* SKILLS – SMALL WHITE BOXES */
+.skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
 }
 
 .skill-box {
-  background: rgba(255,255,255,0.06);
+  background: #ffffff;
+  border-radius: 12px;
   padding: 14px 10px;
-  border-radius: 10px;
   text-align: center;
-  font-size: 13px;
-  transition: transform 0.3s ease;
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.skill-box img {
+  width: 36px;
+  margin-bottom: 6px;
+}
+
+.skill-box span {
+  font-size: 12px;
+  color: #000;
 }
 
 .skill-box:hover {
   transform: translateY(-6px);
 }
 
-.skill-box img {
-  width: 36px;
-  height: 36px;
-  margin-bottom: 6px;
+/* TOOLTIP */
+.skill-box::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -36px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000;
+  color: #fff;
+  font-size: 10px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  opacity: 0;
+  white-space: nowrap;
 }
 
-/* ===========================
-   MOBILE REFINEMENTS
-=========================== */
+.skill-box:hover::after {
+  opacity: 1;
+}
+
+
+/* ANIMATION */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* FIX LOGO ↔ TEXT GAP (DESKTOP + MOBILE) */
+.edu-card {
+  gap: 12px;   /* 🔥 24px/16px ऐवजी */
+}
+/* =====================
+   MOBILE POLISH (FINAL)
+===================== */
 @media (max-width: 768px) {
+
+  /* 🔥 FIX ROOT LAYOUT */
+  body {
+    display: block;
+    overflow-x: hidden;
+  }
+
+  main {
+    width: 100%;
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  /* EDUCATION CARD */
   .edu-card {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 14px;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    padding: 18px;
   }
 
-  .edu-logo img {
-    width: 64px;
-    height: 64px;
+  /* LOGOS ROW */
+  .edu-logos {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .edu-logos img {
+    width: 60px;     /* ✅ mobile-safe size */
+    height: 60px;
+    object-fit: contain;
+  }
+
+  /* TEXT BLOCK */
+  .edu-info {
+    width: 100%;
+    text-align: center;
+  }
+
+  .edu-info h3 {
+    font-size: 15px;
+    line-height: 1.4;
+  }
+
+  .edu-info p {
+    font-size: 13px;
+    margin: 6px 0;
+  }
+
+  .university-name {
+    font-size: 12px;
+  }
+
+  .edu-year {
+    font-size: 12px;
+  }
+
+  /* BUTTON */
+  .edu-btn {
+    position: static;
+    margin-top: 10px;
+    display: inline-block;
   }
 }
-}
 
 
-/* ARCHIT STYLE SKILLS */
-.skills-archit {
-  margin-top: 20px;
+/* SKILLS GRID */
+.skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 
-.skill-item {
+/* SKILL CARD */
+.skill-box {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 16px 18px;
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 13px;
-  opacity: 0.9;
+  gap: 14px;
+
+  height: 70px;                 /* 🔥 SAME SIZE */
+  cursor: pointer;
+
+  transition: all 0.35s ease;
+  position: relative;
 }
 
-.skill-item img {
-  width: 22px;
-  height: 22px;
+/* LOGO */
+.skill-box img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
 }
 
-.skill-item.text-only {
-  padding-left: 32px;
+/* TEXT */
+.skill-box span {
+  font-size: 14px;
+  font-weight: 600;
+  color: #020617;
+}
+
+/* CERTIFICATE-LIKE HOVER */
+.skill-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 35px rgba(0,0,0,0.25);
+}
+
+/* TOOLTIP (ON ARROW HOVER) */
+.skill-box::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -36px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000;
+  color: #fff;
+  font-size: 11px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  transition: 0.25s;
+}
+
+.skill-box:hover::after {
+  opacity: 1;
+}
+
+/* REVEAL ANIMATION (SAME AS CERTS) */
+.reveal {
+  animation: fadeUp 0.8s ease both;
 }
 
 
+
+
+/* =========================
+   SCROLL REVEAL ANIMATION
+========================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 
