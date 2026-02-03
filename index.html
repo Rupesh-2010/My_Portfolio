@@ -103,9 +103,6 @@
     Alongside analytics, I am actively building expertise in Data Science and AI/ML, with hands-on projects involving Python, Pandas, Scikit-learn, Streamlit, and Generative AI. I enjoy solving business problems through data, continuously learning new technologies, and converting analytical insights into practical, impactful solutions.
   </p>
 
-          <div class="section-footer">
-  Created With ❤️ By Rupesh Desai 👨🏻‍💻
-</div>
 </section>
 
 <!--Education Section-->
@@ -332,12 +329,6 @@
   </div>
 
 </div>
-
-
-    
-        <div class="section-footer">
-  Created With ❤️ By Rupesh Desai 👨🏻‍💻
-</div>
     </div>
 </div>
 </section>
@@ -360,9 +351,6 @@
         <a href="#" target="_blank">YouTube</a>
         <a href="#" target="_blank">GitHub</a>
         <a href="#" target="_blank">Visit Site</a>
-        <div class="section-footer">
-  Created With ❤️ By Rupesh Desai 👨🏻‍💻
-</div>
 
       </div>
     </div>
@@ -372,38 +360,43 @@
   
 
   <section id="resume" class="page-section">
-
-  <h2 class="section-title">Resume</h2>
+  <h2>Resume</h2>
 
   <div class="resume-card reveal">
 
-    <!-- PREVIEW (DESKTOP ONLY) -->
-    <iframe 
-      src="assets/resume.pdf"
-      class="resume-preview"
-      title="Rupesh Desai Resume">
-    </iframe>
+    <!-- Header -->
+    <div class="resume-header">
+      <span class="resume-file">Resume.pdf</span>
 
-    <!-- ACTION BUTTONS -->
-    <div class="resume-actions">
-      <a href="assets/resume.pdf" target="_blank" class="resume-btn primary">
-        View Resume
-      </a>
+      <div class="resume-actions">
+        <a href="assets/resume.pdf" download class="resume-btn">
+          ⬇ Download
+        </a>
+        <a href="assets/resume.pdf" target="_blank" class="resume-btn outline">
+          ↗ Open
+        </a>
+      </div>
+    </div>
 
-      <a href="assets/resume.pdf" download class="resume-btn outline">
-        Download Resume
-      </a>
+    <!-- Divider -->
+    <div class="resume-divider"></div>
+
+    <!-- Embedded PDF -->
+    <div class="resume-viewer">
+      <iframe
+        src="assets/resume.pdf"
+        title="Rupesh Desai Resume">
+      </iframe>
     </div>
 
   </div>
 
-
-
-    <div class="section-footer">
-  Created With ❤️ By Rupesh Desai 👨🏻‍💻
-</div>
+  <p class="resume-meta">
+    Last updated: Feb 2026 • PDF • 1 page
+  </p>
 </section>
-  </section>
+
+
 
   <!-- CONTACT -->
   <section id="contact" class="page-section">
@@ -436,17 +429,20 @@
   <section class="guestbook">
   <h2>Guest Book</h2>
 
-  <form id="guestForm">
-    <input type="text" id="guestName" placeholder="Your name" required />
-    <textarea id="guestMessage" placeholder="Your message" required></textarea>
+<form id="guestForm">
+  <input id="guestName" placeholder="Your name" required />
+  <input id="guestEmail" type="email" placeholder="Your email" required />
+  <textarea id="guestMessage" placeholder="Your message" required></textarea>
 
-    <div class="guest-actions">
-      <button type="button" id="sendMail">Send Message</button>
-      <button type="submit" id="addComment">Submit Comment</button>
-    </div>
-  </form>
+  <div class="guest-actions">
+    <button type="button" id="sendMail">Send Message</button>
+    <button type="button" id="addComment">Submit Comment</button>
+  </div>
 
-<div id="commentsList"></div>
+  <div id="commentsList"></div>
+</form>
+
+
 
 </section>
 
@@ -468,5 +464,15 @@
   </section>
 
 </main>
+
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<!-- JS FILES -->
+<script src="js/main.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/typing.js"></script>
+
+
 </body>
 </html>
