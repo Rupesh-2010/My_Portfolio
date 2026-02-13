@@ -261,8 +261,10 @@ async function loadVisitorCount() {
   try {
 
     const res = await fetch(
-      "https://rupeshportfolio.goatcounter.com/counter/TOTAL.json"
-    );
+  "https://rupeshportfolio.goatcounter.com/counter/TOTAL.json",
+  { cache: "no-store" }
+);
+
 
     const data = await res.json();
 
