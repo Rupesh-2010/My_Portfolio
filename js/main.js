@@ -253,3 +253,30 @@ window.addEventListener("resize", () => {
 function reflow(){
   document.body.offsetHeight;
 }
+
+
+/* ===== LIVE VISITOR COUNTER ===== */
+
+async function loadVisitorCount() {
+  try {
+
+    const res = await fetch(
+      "https://rupeshportfolio.goatcounter.com/counter/TOTAL.json"
+    );
+
+    const data = await res.json();
+
+    const count = data.count;
+
+    const counterElement = document.getElementById("viewCount");
+
+    if (counterElement) {
+      counterElement.textContent = count;
+    }
+
+  } catch (err) {
+    console.log("Counter not ready yet");
+  }
+}
+
+loadVisitorCount();
