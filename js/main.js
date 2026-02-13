@@ -225,44 +225,15 @@ if(themeToggle){
 
 /* ===== DESKTOP REOPEN SIDEBAR ===== */
 
-const reopenBtn = document.getElementById("reopenSidebar");
+/* ===== FORCE REOPEN FIX ===== */
 
-if(menuToggle && reopenBtn){
+const reopenSidebarBtn = document.getElementById("reopenSidebar");
 
-  menuToggle.addEventListener("click", () => {
-
-    if(window.innerWidth >= 900){
-
-      setTimeout(()=>{
-        if(leftPanel.classList.contains("closed")){
-          reopenBtn.style.display="flex";
-        }else{
-          reopenBtn.style.display="none";
-        }
-      },250);
-
-    }
-
-  });
-
-  reopenBtn.addEventListener("click", ()=>{
-    leftPanel.classList.remove("closed");
-    reopenBtn.style.display="none";
-  });
-
-}
-
-else{
-
-  if(leftPanel.classList.contains("closed")){
-    leftPanel.classList.remove("closed");
+if(reopenSidebarBtn){
+  reopenSidebarBtn.addEventListener("click",()=>{
     document.body.classList.remove("sidebar-closed");
-  }else{
-    leftPanel.classList.add("closed");
-    document.body.classList.add("sidebar-closed");
-  }
-
-  reflow();
+    leftPanel.classList.remove("closed");
+  });
 }
 
 
