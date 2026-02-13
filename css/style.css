@@ -1,0 +1,1966 @@
+html{
+  scroll-behavior:smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  display: flex;
+}
+
+/* DARK THEME */
+body.dark {
+  background: #020617;
+  color: #e5e7eb;
+}
+
+/* LEFT PANEL */
+.left-panel {
+  width: 300px;
+  height: 100vh;
+  position: fixed;
+  background: #020617;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  z-index: 900;
+
+}
+
+/* COVER PHOTO */
+.cover-photo img {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+}
+
+/* PROFILE */
+
+/* PROFILE WRAPPER */
+.profile-wrapper {
+  position: relative;
+  margin-top: -30px;
+}
+
+/* PROFILE IMAGE + BITMOJI – FINAL FIX */
+.profile-swipe img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: none;
+  cursor: pointer;
+
+  /* 🔥 IMPORTANT FIX */
+  object-fit: cover;        /* contain ❌ → cover ✅ */
+  background-color: #000;   /* black circle for bitmoji */
+
+  /* YELLOW BORDER */
+  border: 4px solid #facc15;
+
+  /* DARK YELLOW GLOW */
+  box-shadow:
+    0 0 0 2px #020617,
+    0 0 14px rgba(250, 204, 21, 0.9);
+
+  padding: 0;               /* 🚫 no inner gap */
+  margin: 0;                /* 🚫 no outer gap */
+}
+
+.profile-swipe img.active {
+  display: block;
+}
+
+
+
+/* ONLINE GREEN DOT (ON BORDER) */
+.online-dot {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+
+  width: 14px;
+  height: 14px;
+  background: #22c55e;
+  border-radius: 50%;
+
+  /* DARK BORDER SO IT SITS ON YELLOW CIRCLE */
+  border: 2px solid #020617;
+
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.9);
+  animation: onlineBlink 1.5s infinite;
+}
+
+/* BLINK EFFECT */
+@keyframes onlineBlink {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.85);
+  }
+}
+
+
+/* NAME ANIMATION */
+.name-glow {
+  margin-top: 15px;
+  font-size: 22px;
+  font-weight: 600;
+  animation: glow 3s infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 5px #60a5fa; }
+  to { text-shadow: 0 0 15px #60a5fa; }
+}
+
+/* TYPING */
+#typing {
+  font-size: 14px;
+  color: #60a5fa;
+  margin-top: 6px;
+  min-height: 18px;
+}
+
+/* QUOTE BOX */
+.quote-box {
+  margin-top: 18px;
+  background: rgba(255,255,255,0.05);
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  text-align: center;
+  color: #e5e7eb;
+}
+
+/* SOCIAL ICONS */
+.social-icons {
+  margin-top: auto;
+  padding: 22px 0 15px; 
+  margin-bottom: 60px;
+  display: flex;
+  gap: 25px;
+}
+
+.social-icons img {
+  width: 22px;
+  transition: 0.3s;
+}
+
+.social-icons a:hover img {
+  transform: translateY(-4px) scale(1.1);
+  filter: drop-shadow(0 0 6px #60a5fa);
+}
+
+/* ROLES LIST */
+.roles-list {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.role {
+  font-size: 14px;
+  color: #9ca3af;
+  opacity: 0.5;
+  transition: 0.4s;
+  line-height: 1.6;
+}
+
+/* ACTIVE ROLE */
+.role.active {
+  color: #60a5fa;
+  opacity: 1;
+  font-weight: 600;
+  text-shadow: 0 0 8px rgba(96,165,250,0.8);
+}
+
+/* RIGHT SIDE MAIN AREA */
+main {
+  margin-left: 300px;
+  width: calc(100% - 300px);
+  min-height: 100vh;
+  padding-left: 40px;
+  padding-top:80px;
+
+  /* 🔥 PARTITION EFFECT */
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 12px 0 20px -15px rgba(0,0,0,0.9);
+}
+
+/* NAVBAR */
+
+/* SECTIONS */
+.page-section {
+  display: none;
+  margin: 40px auto;
+  padding: 60px;
+  max-width: 100%;
+
+  background: linear-gradient(180deg, #020617, #020617);
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+.page-section.active {
+  display: block;
+}
+
+
+/* TOP NAVBAR */
+nav{
+  position:fixed;
+  top:0;
+  left:300px;
+  width:calc(100% - 300px);
+  right:0;
+  z-index:1000;
+
+  background:rgba(2,6,23,0.92);
+  backdrop-filter:blur(10px);
+
+  display:flex;
+  justify-content:center;
+  gap:55px;
+  letter-spacing:.4px;
+  padding:16px 0;
+
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+
+nav a{
+  color:#e5e7eb;
+  text-decoration:none;
+  font-size:15px;
+  font-weight:500;
+  position:relative;
+  padding:10px 18px;
+  border-radius:8px;
+  transition:.25s;
+}
+
+
+/* underline animation */
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #60a5fa;
+  transition: 0.3s;
+}
+
+nav a:hover{
+  background:rgba(96,165,250,0.12);
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+.page-section.active {
+  display: block;
+}
+
+.about-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #d1d5db;
+  margin-top: 18px;
+}
+
+.about-footer {
+  margin-top: 100px;
+  opacity: 0.8;
+  font-size: 18px;
+}
+/* SECTION FOOTER */
+.section-footer {
+  margin-top: 60px;
+  text-align: center;
+  font-size: 13px;
+  opacity: 0.5;
+}
+
+
+/* ===========================
+   PROJECT CARD SIZE REDUCTION
+=========================== */
+
+/* IMAGE height कमी */
+.project-image {
+  height: 170px;   /* आधी 200px होतं */
+}
+
+/* CONTENT spacing कमी */
+.project-content {
+  padding: 18px 22px 12px;
+}
+
+.project-content h3 {
+  font-size: 17px;
+}
+
+.project-content p {
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+/* ===========================
+   FOOTER RESTRUCTURE
+=========================== */
+
+.project-footer {
+  flex-direction: column;   /* skills खाली */
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 16px 14px;  /* bottom space कमी */
+}
+
+/* ACTION ICONS ROW */
+.project-actions {
+  display: flex;
+  gap: 14px;
+}
+
+/* ===========================
+   TECH STACK BELOW ICONS
+=========================== */
+
+.project-tech {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+/* ===========================
+   TOOLTIP FIX (NO OVERLAP)
+=========================== */
+
+/* action icon tooltip */
+.icon-btn::after {
+  bottom: -30px;
+  z-index: 5;
+}
+
+/* tech tooltip */
+.project-tech img {
+  position: relative;
+}
+
+.project-tech img::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -26px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000;
+  color: #fff;
+  font-size: 10px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  opacity: 0;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+.project-tech img:hover::after {
+  opacity: 1;
+}
+
+/* ===========================
+   REMOVE EXTRA BOTTOM SPACE
+=========================== */
+
+.project-card {
+  padding: 18px;              /* आधी 24px असेल तर कमी */
+  min-height: 420px;          /* 🔥 थोडी height वाढव */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* =====================
+   RESUME SECTION
+===================== */
+
+.resume-card {
+  background: #0b1220;
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.55);
+  text-align: center;
+}
+
+/* PDF PREVIEW */
+.resume-preview {
+  width: 100%;
+  height: 420px;
+  border-radius: 12px;
+  border: none;
+  margin-bottom: 22px;
+  background: #020617;
+}
+
+/* BUTTON AREA */
+.resume-actions {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+/* BUTTON BASE */
+.resume-btn {
+  padding: 12px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+/* PRIMARY */
+.resume-btn.primary {
+  background: #2563eb;
+  color: #fff;
+}
+
+.resume-btn.primary:hover {
+  background: #1d4ed8;
+  transform: translateY(-3px);
+}
+
+
+/* =====================
+   RESUME SCROLL FIX
+===================== */
+
+/* Allow page to scroll */
+body, html {
+  overflow-y: auto;
+}
+
+/* Resume section should NOT lock scroll */
+#resume {
+  overflow: visible;
+}
+
+/* PDF iframe – internal scroll OK */
+.resume-preview {
+  max-height: 420px;
+  overflow: auto;
+}
+
+/* Page section generic fix */
+.page-section {
+  overflow: visible;
+}
+
+
+
+/* OUTLINE */
+.resume-btn.outline {
+  border: 1px solid #60a5fa;
+  color: #60a5fa;
+}
+
+.resume-btn.outline:hover {
+  background: rgba(96,165,250,0.15);
+  transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+
+  .resume-preview {
+    display: none;   /* 📱 mobile वर preview hide */
+  }
+
+  .resume-card {
+    padding: 22px;
+  }
+
+}
+
+
+/* =====================
+   CONTACT SECTION
+===================== */
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.contact-name {
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: 1px;
+
+  background: linear-gradient(90deg, #60a5fa, #38bdf8);
+
+  -webkit-background-clip: text;   /* ✅ FIX */
+  background-clip: text;           /* Firefox support */
+  color: transparent;               /* safer than text-fill */
+
+  animation: glowText 3s infinite alternate;
+  display: inline-block;            /* IMPORTANT */
+}
+
+
+@keyframes glowText {
+  from {
+    text-shadow: 0 0 8px rgba(96,165,250,0.4);
+  }
+  to {
+    text-shadow: 0 0 18px rgba(56,189,248,0.9);
+  }
+}
+
+
+.contact-sub {
+  margin-top: 10px;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+/* ICONS */
+.contact-icons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 30px 0;
+}
+
+.contact-icons img {
+  width: 38px;
+  transition: 0.35s;
+}
+
+.contact-icons a:hover img {
+  transform: translateY(-6px) scale(1.15);
+  filter: drop-shadow(0 0 10px #60a5fa);
+}
+
+/* MAP */
+.contact-map {
+  margin-top: 30px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+.contact-map iframe {
+  width: 100%;
+  height: 320px;
+  border: none;
+}
+
+
+.guestbook {
+  margin-top: 40px;
+}
+
+.guestbook h2 {
+  margin-bottom: 20px;
+}
+
+#guestForm input,
+#guestForm textarea {
+  width: 100%;
+  background: #020617;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.guest-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.guest-actions button {
+  padding: 10px 18px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  background: #2563eb;
+  color: #fff;
+}
+
+.comment {
+  background: #0b1220;
+  padding: 14px;
+  border-radius: 10px;
+  margin-top: 14px;
+}
+
+.comment small {
+  opacity: 0.6;
+  font-size: 11px;
+}
+
+
+
+
+
+
+
+
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .contact-name {
+    font-size: 32px;
+  }
+
+  .contact-map iframe {
+    height: 260px;
+  }
+}
+
+nav {
+  gap: 16px;
+  font-size: 12px;
+  padding: 10px 0;
+
+  background: #020617;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.page-section {
+  margin: 16px 12px;
+  padding: 24px;
+}
+@media (max-width: 768px) {
+  .section-footer {
+    font-size: 11px;
+    margin-top: 40px;
+  }
+}
+
+
+/* ==========================
+   EDUCATION (ASHUTOSH STYLE)
+========================== */
+
+.education-scroll {
+  max-height: calc(100vh - 140px);
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+
+
+/* COLLEGE CARDS */
+
+/* ===== EDUCATION COLLEGE CARD – FINAL ===== */
+
+
+/* ===== EDUCATION COLLEGE CARD – FINAL FIX ===== */
+
+.edu-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  gap: 12px;                 /* 🔥 logo ↔ text gap FIX */
+  padding: 22px;
+  margin-bottom: 30px;
+
+  background: #0b1220;
+  border-radius: 16px;
+}
+
+/* LOGOS COLUMN (FIXED WIDTH) */
+.edu-logos {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  width: 150px;              /* 🔥 controls text start point */
+  flex-shrink: 0;
+}
+
+/* LOGO SIZE */
+.edu-logos img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+
+/* TEXT BLOCK */
+.edu-info {
+  flex: 1;
+  text-align: left;          /* 🔥 keeps text near logos */
+}
+
+/* DEGREE */
+.edu-info h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+/* COLLEGE NAME */
+.edu-info p {
+  margin: 6px 0;
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+/* UNIVERSITY NAME */
+.university-name {
+  margin: 4px 0;
+  font-size: 13px;
+  opacity: 0.65;
+  font-style: italic;
+}
+
+/* YEAR */
+.edu-year {
+  margin-top: 6px;
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+/* WEBSITE BUTTON */
+.edu-btn {
+  position: absolute;
+  right: 18px;
+  bottom: 16px;
+
+  font-size: 13px;
+  padding: 6px 16px;
+
+  color: #60a5fa;
+  text-decoration: none;
+  border: 1px solid rgba(96,165,250,0.4);
+  border-radius: 20px;
+
+  transition: all 0.3s ease;
+}
+
+.edu-btn:hover {
+  background: rgba(96,165,250,0.18);
+  transform: translateY(-2px);
+}
+
+
+/* ==========================
+   CERTIFICATIONS – FINAL
+========================== */
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 30px;
+}
+
+.cert-card {
+  background: #0b1220;
+  border-radius: 16px;
+  padding: 18px;
+  text-align: center;
+  text-decoration: none;
+  color: #e5e7eb;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* IMAGE */
+.cert-card img {
+  width: 100%;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+/* TEXT */
+.cert-card p {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.cert-card span {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* 🔥 SAME AS SKILLS HOVER */
+.cert-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 14px 32px rgba(96,165,250,0.28);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .cert-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+
+/* SKILLS – SMALL WHITE BOXES */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.skill-box {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 14px 10px;
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.skill-box img {
+  width: 36px;
+  margin-bottom: 6px;
+}
+
+.skill-box span {
+  font-size: 12px;
+  color: #000;
+}
+
+.skill-box:hover {
+  transform: translateY(-6px);
+}
+
+/* TOOLTIP */
+.skill-box::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -36px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000;
+  color: #fff;
+  font-size: 10px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  opacity: 0;
+  white-space: nowrap;
+}
+
+.skill-box:hover::after {
+  opacity: 1;
+}
+
+
+/* ANIMATION */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* FIX LOGO ↔ TEXT GAP (DESKTOP + MOBILE) */
+.edu-card {
+  gap: 12px;   /* 🔥 24px/16px ऐवजी */
+}
+/* =====================
+   MOBILE POLISH (FINAL)
+===================== */
+@media (max-width: 768px) {
+
+  /* 🔥 FIX ROOT LAYOUT */
+  body {
+    display: block;
+    overflow-x: hidden;
+  }
+
+  main {
+    width: 100%;
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  /* EDUCATION CARD */
+  .edu-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    padding: 18px;
+  }
+
+  /* LOGOS ROW */
+  .edu-logos {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .edu-logos img {
+    width: 60px;     /* ✅ mobile-safe size */
+    height: 60px;
+    object-fit: contain;
+  }
+
+  /* TEXT BLOCK */
+  .edu-info {
+    width: 100%;
+    text-align: center;
+  }
+
+  .edu-info h3 {
+    font-size: 15px;
+    line-height: 1.4;
+  }
+
+  .edu-info p {
+    font-size: 13px;
+    margin: 6px 0;
+  }
+
+  .university-name {
+    font-size: 12px;
+  }
+
+  .edu-year {
+    font-size: 12px;
+  }
+
+  /* BUTTON */
+  .edu-btn {
+    position: static;
+    margin-top: 10px;
+    display: inline-block;
+  }
+}
+
+
+/* SKILLS GRID */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* SKILL CARD */
+.skill-box {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  height: 70px;                 /* 🔥 SAME SIZE */
+  cursor: pointer;
+
+  transition: all 0.35s ease;
+  position: relative;
+}
+
+/* LOGO */
+.skill-box img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+/* TEXT */
+.skill-box span {
+  font-size: 14px;
+  font-weight: 600;
+  color: #020617;
+}
+
+/* CERTIFICATE-LIKE HOVER */
+.skill-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 35px rgba(0,0,0,0.25);
+}
+
+/* TOOLTIP (ON ARROW HOVER) */
+.skill-box::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -36px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000;
+  color: #fff;
+  font-size: 11px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  transition: 0.25s;
+}
+
+.skill-box:hover::after {
+  opacity: 1;
+}
+
+/* REVEAL ANIMATION (SAME AS CERTS) */
+.reveal {
+  animation: fadeUp 0.8s ease both;
+}
+
+
+
+
+/* =========================
+   SCROLL REVEAL ANIMATION
+========================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* =========================
+   GUEST BOOK – COMMENTS UI
+========================= */
+
+.comments-list {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* single comment */
+.comment {
+  background: linear-gradient(145deg, #020617, #0b1220);
+  border-radius: 14px;
+  padding: 16px 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: commentFade 0.5s ease forwards;
+}
+
+/* name + time */
+.comment strong {
+  font-size: 14px;
+  color: #60a5fa;
+}
+
+.comment small {
+  font-size: 11px;
+  opacity: 0.6;
+  margin-left: 6px;
+}
+
+/* message */
+.comment p {
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #e5e7eb;
+}
+
+/* delete button */
+.comment .delete-btn {
+  margin-top: 10px;
+  background: transparent;
+  color: #f87171;
+  border: 1px solid rgba(248,113,113,0.4);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.comment .delete-btn:hover {
+  background: rgba(248,113,113,0.15);
+  transform: scale(1.05);
+}
+
+/* animation */
+@keyframes commentFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* mobile polish */
+@media (max-width: 480px) {
+  .comment {
+    padding: 14px;
+  }
+}
+
+
+.fade-in {
+  animation: fadeUp 0.5s ease forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+/* ===========================
+   PROJECTS SECTION
+=========================== */
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  margin-top: 40px;
+}
+
+/* PROJECT CARD */
+.project-card {
+  background: #0b1220;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Hover animation (Berkay style) */
+.project-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+}
+
+/* IMAGE */
+.project-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+   margin: 0;
+  padding: 0;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 🔥 FULL COVER */
+  margin: 0;
+  padding: 0;
+  border-radius: 0;   /* 🔥 IMPORTANT */
+  display: block;  
+}
+
+
+.project-card:hover img {
+  transform: scale(1.08);
+}
+
+/* CONTENT */
+.project-content {
+  padding: 14px 18px 6px;
+}
+
+.project-content h3 {
+  margin: 12px 0 6px 0;
+  font-size: 20px;
+  font-weight: 800;
+  text-align: center;
+
+  color: #ffffff;
+
+  letter-spacing: 0.4px;
+
+  /* highlight glow */
+  text-shadow: 
+    0 0 6px rgba(96,165,250,0.6),
+    0 0 12px rgba(96,165,250,0.3);
+}
+
+
+.project-content p {
+  margin-top: 8px;
+  font-size: 14px;
+  opacity: 0.85;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* FOOTER */
+.project-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px 18px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ACTION ICONS */
+.project-actions {
+  display: flex;
+  gap: 14px;
+}
+
+.icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e5e7eb;
+  font-size: 16px;
+  position: relative;
+  transition: 0.3s;
+}
+
+.icon-btn:hover {
+  background: #60a5fa;
+  color: #020617;
+  transform: translateY(-4px);
+}
+
+/* TOOLTIP */
+.icon-btn::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -34px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000;
+  color: #fff;
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  opacity: 0;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+.icon-btn:hover::after {
+  opacity: 1;
+}
+
+/* TECH LOGOS */
+.project-tech {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.project-tech img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.85;
+  transition: 0.3s;
+}
+
+.project-card:hover .project-tech img {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+
+/* ===========================
+   FIX ACTION ICON OVERLAP
+=========================== */
+
+/* Action icons थोडे वर */
+.project-actions {
+  margin-bottom: 10px;   /* 👈 icons वर उचलले */
+  position: relative;
+  z-index: 20;
+}
+
+/* Action icon tooltip */
+.icon-btn::after {
+  bottom: -32px;
+  z-index: 30;           /* 👈 always above */
+}
+
+/* ===========================
+   TECH STACK SPACING + TOOLTIP
+=========================== */
+
+
+.project-tech {
+  margin-top: 14px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.tech-icon {
+  position: relative;
+  cursor: pointer;
+}
+
+.tech-icon img {
+  width: 26px;
+  height: 26px;
+}
+
+/* TOOLTIP */
+.tech-icon::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000;
+  color: #fff;
+  font-size: 10px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  opacity: 0;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: 0.3s ease;
+  z-index: 20;
+}
+
+.tech-icon:hover::after {
+  opacity: 1;
+}
+
+
+
+/* ===========================
+   MOBILE POLISH
+=========================== */
+@media (max-width: 768px) {
+
+  .project-image {
+    height: 180px;
+  }
+
+  .project-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+}
+
+
+/* =========================
+   RESUME SECTION
+========================= */
+
+.resume-card {
+  background: linear-gradient(180deg, #020617, #020617);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+/* Header */
+.resume-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resume-file {
+  font-size: 15px;
+  font-weight: 600;
+  color: #e5e7eb;
+}
+
+/* Buttons */
+.resume-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.resume-btn {
+  padding: 8px 16px;
+  background: #2563eb;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 20px;
+  font-size: 13px;
+  transition: all 0.3s ease;
+}
+
+.resume-btn:hover {
+  transform: translateY(-2px);
+  background: #1d4ed8;
+}
+
+.resume-btn.outline {
+  background: transparent;
+  border: 1px solid rgba(96,165,250,0.5);
+  color: #60a5fa;
+}
+
+.resume-btn.outline:hover {
+  background: rgba(96,165,250,0.15);
+}
+
+/* Divider */
+.resume-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+  margin: 16px 0;
+}
+
+/* PDF Viewer */
+.resume-viewer {
+  width: 100%;
+  height: 600px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.resume-viewer iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Footer text */
+.resume-meta {
+  margin-top: 10px;
+  font-size: 12px;
+  opacity: 0.6;
+  text-align: right;
+}
+
+/* =========================
+   MOBILE BEHAVIOUR
+========================= */
+
+@media (max-width: 768px) {
+
+  .resume-viewer {
+    display: none; /* ❌ iframe hide on mobile */
+  }
+
+  .resume-header {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .resume-actions {
+    justify-content: center;
+  }
+}
+
+
+/* ===========================
+   PROJECTS SECTION – FINAL
+=========================== */
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+  margin-top: 40px;
+}
+
+/* PROJECT CARD */
+.project-card {
+  background: #0b1220;
+  border-radius: 18px;
+  overflow: hidden;                  /* 🔥 IMPORTANT */
+  box-shadow: 0 18px 40px rgba(0,0,0,0.55);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.75);
+}
+
+/* ================= IMAGE ================= */
+
+.project-image {
+  width: 100%;
+  height: 200px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;                 /* 🔥 FULL COVER */
+  display: block;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.06);
+}
+
+/* ================= CONTENT ================= */
+
+.project-content {
+  padding: 14px 18px 6px;             /* 🔥 compact */
+}
+
+.project-content h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.project-content p {
+  margin-top: 6px;
+  margin-bottom: 6px;
+  font-size: 13px;
+  line-height: 1.5;
+  opacity: 0.85;
+}
+
+/* ================= FOOTER ================= */
+
+.project-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 16px 14px;             /* 🔥 reduced height */
+  gap: 8px;
+}
+
+/* ================= ACTION ICONS ================= */
+
+.project-actions {
+  display: flex;
+  gap: 14px;
+  margin-top: -4px;                   /* 🔥 icons slightly up */
+  margin-bottom: 6px;
+  position: relative;
+  z-index: 30;
+}
+
+.icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e5e7eb;
+  font-size: 16px;
+  position: relative;
+  transition: 0.3s;
+}
+
+.icon-btn:hover {
+  background: #60a5fa;
+  color: #020617;
+  transform: translateY(-4px);
+}
+
+/* ACTION TOOLTIP */
+.icon-btn::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000;
+  color: #fff;
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  opacity: 0;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: 0.25s;
+  z-index: 50;
+}
+
+.icon-btn:hover::after {
+  opacity: 1;
+}
+
+/* ================= TECH STACK ================= */
+
+.project-tech {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 4px;
+  padding-bottom: 8px;               /* tooltip space */
+}
+
+.project-tech img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.85;
+  position: relative;
+  transition: 0.3s;
+}
+
+.project-card:hover .project-tech img {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* TECH TOOLTIP */
+.project-tech img::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -26px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000;
+  color: #fff;
+  font-size: 10px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  opacity: 0;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: 0.25s;
+  z-index: 40;
+}
+
+.project-tech img:hover::after {
+  opacity: 1;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+  .project-image {
+    height: 180px;
+  }
+}
+
+
+/* Hamburger (sidebar) */
+.menu-toggle {
+  bottom: 68px;
+}
+
+/* Dark theme */
+.theme-float {
+  bottom: 18px;
+}
+
+/* hover effect */
+.menu-toggle:hover,
+.theme-float:hover {
+  transform: scale(1.08);
+  background: #60a5fa;
+  color: #020617;
+}
+
+/* Only mobile show */
+@media (min-width: 900px) {
+  .menu-toggle,
+  .theme-float {
+    display: none;
+  }
+}
+
+
+/* PANEL CONTROL BUTTONS (BOTTOM LEFT PANEL) */
+.panel-controls{
+    margin-top:auto;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    padding:18px 20px 22px;
+}
+
+/* SIDEBAR MENU BUTTON */
+.menu-toggle{
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    background:#0b1220;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
+    cursor:pointer;
+    transition:.25s;
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.menu-toggle:hover{
+    background:#60a5fa;
+    color:#020617;
+    transform:translateY(-3px);
+}
+
+/* DARK MODE BUTTON */
+.theme-float{
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    background:#0b1220;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
+    cursor:pointer;
+    transition:.25s;
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.theme-float:hover{
+    background:#facc15;
+    color:#020617;
+    transform:translateY(-3px);
+}
+
+/* =========================================
+   FINAL SIDEBAR TOGGLE SYSTEM (WORKING)
+========================================= */
+
+/* smooth animation */
+.left-panel{
+  transition: left .35s ease;
+}
+
+/* ---------- DESKTOP ---------- */
+
+/* sidebar normal */
+@media (min-width:900px){
+
+  .left-panel{
+    left:0;
+    position:fixed;
+  }
+
+main{
+  margin-left:300px;
+  width:calc(100% - 300px);
+  padding:80px 40px 40px;
+  max-width:none;   /* IMPORTANT */
+}
+
+  /* when hidden */
+.left-panel.closed{
+    width:0 !important;
+    min-width:0 !important;
+    overflow:hidden;
+    padding:0;
+    border:none;
+}
+
+body.sidebar-closed main{
+    margin-left:0 !important;
+    width:100% !important;
+}
+
+body.sidebar-closed main{
+    margin-left:0 !important;
+    width:100% !important;
+}
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width:900px){
+
+  body{
+    overflow-x:hidden;
+  }
+
+  .left-panel{
+    position:fixed;
+    top:0;
+    left:-300px;
+    width:300px;
+    height:100%;
+    z-index:9999;
+  }
+
+  /* open on mobile */
+  .left-panel.open{
+    left:0;
+  }
+
+  main{
+    margin-left:0;
+    width:100%;
+    padding-left:18px;
+  }
+}
+
+/* =====================================================
+   FINAL CONTROL BAR LAYOUT (ACTUAL FIX)
+   ===================================================== */
+
+/* left panel inner spacing so buttons cut होणार नाहीत */
+.left-panel{
+  padding-bottom:110px;
+}
+
+/* social icons थोडे खाली */
+.social-icons{
+  margin-top:14px;
+  margin-bottom:6px;
+}
+
+/* ===== CONTROL BAR (buttons + counter) ===== */
+
+.control-bar{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:10px 18px 14px;
+  margin-top:6px;
+}
+
+/* buttons style polish */
+.control-btn{
+  width:40px;
+  height:40px;
+  border-radius:12px;
+  background:#0b1220;
+  border:1px solid rgba(255,255,255,0.08);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:18px;
+  cursor:pointer;
+  transition:.25s;
+}
+
+/* hover */
+.control-btn:hover{
+  transform:translateY(-3px);
+  background:#60a5fa;
+  color:#020617;
+}
+
+/* page view badge (mini dashboard) */
+.page-views{
+  font-size:15px;
+  color:#cbd5e1;
+  background:rgba(255,255,255,0.06);
+  padding:5px 14px;
+  border-radius:20px;
+  white-space:nowrap;
+  border:1px solid rgba(255,255,255,0.10);
+  backdrop-filter:blur(6px);
+  letter-spacing:.5px;
+}
+
+/* ===== DESKTOP REOPEN BUTTON ===== */
+
+.reopen-btn{
+  position:fixed;
+  left:12px;
+  top:20px;
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  background:#0b1220;
+  color:#fff;
+  border:1px solid rgba(255,255,255,0.1);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  z-index:9999;
+  transition:.25s;
+}
+
+.reopen-btn:hover{
+  background:#60a5fa;
+  color:#020617;
+}
+
+/* ===== REMOVE OLD FLOATING SYSTEM ===== */
+.menu-toggle,
+.theme-float,
+.panel-controls{
+  display:none !important;
+}
+
+/* mobile polish */
+@media (max-width:900px){
+
+  .control-bar{
+    padding:8px 14px 16px;
+  }
+
+  .page-views{
+    font-size:10px;
+    padding:4px 10px;
+  }
+
+  .control-btn{
+    width:36px;
+    height:36px;
+    font-size:16px;
+  }
+}
+
+
+/* when sidebar hidden */
+body.sidebar-closed nav{
+  left:0;
+  width:100%;
+}
+
+@media (max-width:900px){
+  nav{
+    left:0;
+  }
+}
+
+@media(max-width:900px){
+  nav{
+    gap:22px;
+    padding:14px 6px;
+  }
+
+  nav a{
+    font-size:13px;
+    padding:8px 10px;
+  }
+}
+
+
